@@ -1,0 +1,10 @@
+{
+  "name": "haventra-wedding-planner",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "flutter build web",
+    "dev": "flutter run -d chrome",
+    "test": "flutter test"
+  }
+}
