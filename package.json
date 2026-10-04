@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "install:flutter": "bash ./scripts/install-flutter.sh",
-    "build": "bash ./scripts/vercel-build.sh",
     "dev": "flutter run -d chrome",
     "test": "flutter test"
   }
