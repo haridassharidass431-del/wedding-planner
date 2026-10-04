@@ -35,6 +35,13 @@ migrate_working_dir/
 **/build/
 /dist/
 
+# Include the prebuilt Flutter Web site for static deployment.
+!/build/
+/build/*
+!/build/web/
+/build/web/*
+!/build/web/**
+
 # Node / npm related
 node_modules/
 .npm/
