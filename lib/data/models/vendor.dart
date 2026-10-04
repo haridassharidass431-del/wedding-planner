@@ -37,6 +37,7 @@ class Vendor {
   final List<String> amenities;
   final List<VendorPackage> packages;
   final int capacity; // for halls or catering capacity
+  final bool isAvailable;
 
   const Vendor({
     required this.id,
@@ -59,5 +60,6 @@ class Vendor {
     required this.amenities,
     required this.packages,
     this.capacity = 1000,
+    this.isAvailable = true,
   });
 }

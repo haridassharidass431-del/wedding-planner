@@ -10,11 +10,20 @@ class Booking {
   final String timeSlot;
   final int guestCount;
   final double totalPrice;
-  final String status; // 'Confirmed', 'Pending', 'Completed'
+  final String status; // Pending, Confirmed, Declined, Cancelled, Completed
   final DateTime bookingDate;
   final String specialNotes;
+  final String hallName;
+  final String customerName;
+  final String customerId;
+  final String customerContact;
+  final String customerMessage;
+  final String? vendorResponse;
+  final String? declineReason;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 
-  const Booking({
+  Booking({
     required this.id,
     required this.vendorId,
     required this.vendorName,
@@ -29,7 +38,17 @@ class Booking {
     required this.status,
     required this.bookingDate,
     this.specialNotes = '',
-  });
+    this.hallName = '',
+    this.customerName = '',
+    this.customerId = '',
+    this.customerContact = '',
+    this.customerMessage = '',
+    this.vendorResponse,
+    this.declineReason,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) : createdAt = createdAt ?? DateTime.now(),
+       updatedAt = updatedAt ?? DateTime.now();
 
   Booking copyWith({
     String? id,
@@ -46,6 +65,15 @@ class Booking {
     String? status,
     DateTime? bookingDate,
     String? specialNotes,
+    String? hallName,
+    String? customerName,
+    String? customerId,
+    String? customerContact,
+    String? customerMessage,
+    String? vendorResponse,
+    String? declineReason,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) {
     return Booking(
       id: id ?? this.id,
@@ -62,6 +90,15 @@ class Booking {
       status: status ?? this.status,
       bookingDate: bookingDate ?? this.bookingDate,
       specialNotes: specialNotes ?? this.specialNotes,
+      hallName: hallName ?? this.hallName,
+      customerName: customerName ?? this.customerName,
+      customerId: customerId ?? this.customerId,
+      customerContact: customerContact ?? this.customerContact,
+      customerMessage: customerMessage ?? this.customerMessage,
+      vendorResponse: vendorResponse ?? this.vendorResponse,
+      declineReason: declineReason ?? this.declineReason,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
     );
   }
 }

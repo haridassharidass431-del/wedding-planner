@@ -652,7 +652,7 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                         const SizedBox(width: 16),
                         Expanded(
                           child: LuxuryButton(
-                            text: 'Book Consultation',
+                            text: 'Book Now',
                             isGold: true,
                             icon: Icons.calendar_month_rounded,
                             onPressed: () {

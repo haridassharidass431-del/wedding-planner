@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "flutter build web",
+    "build": "flutter build web --no-tree-shake-icons",
     "dev": "flutter run -d chrome",
     "test": "flutter test"
   }

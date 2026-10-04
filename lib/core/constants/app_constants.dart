@@ -23,9 +23,12 @@ class AppConstants {
     'Catering',
     'Decoration',
     'Makeup',
+    'Mehendi',
     'Bridal Wear',
     'Groom Wear',
+    'Jewellery',
     'Wedding Invitations',
+    'DJ/Music',
     'Other Wedding Services',
   ];
 

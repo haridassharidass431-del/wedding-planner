@@ -1,36 +1,37 @@
 import 'package:flutter/material.dart';
 
 /// App-wide color palette tailored for Haventra Wedding Planner.
-/// Implements deep plum/burgundy, royal gold accents, and ivory/cream surfaces.
+/// Haventra logo palette: two violet brand colors with neutral surfaces.
 class AppColors {
   AppColors._();
 
-  // Primary Plum & Burgundy
-  static const Color primaryPlum = Color(0xFF4A154B);
-  static const Color darkPlum = Color(0xFF2A082B);
-  static const Color burgundy = Color(0xFF67194A);
-  static const Color plumLight = Color(0xFF832B6E);
-  static const Color plumTint = Color(0xFFF6EEF6);
-  static const Color plumOverlay = Color(0x1A4A154B);
+  // Haventra logo: rich violet with a lighter violet supporting accent.
+  static const Color primaryPlum = Color(0xFF4B1FA8);
+  static const Color darkPlum = Color(0xFF351078);
+  static const Color burgundy = Color(0xFF6338C5);
+  static const Color plumLight = Color(0xFF8359D6);
+  static const Color plumTint = Color(0xFFF3EFFB);
+  static const Color plumOverlay = Color(0x1A4B1FA8);
 
   // Royal Gold Accents
-  static const Color royalGold = Color(0xFFD4AF37);
-  static const Color brightGold = Color(0xFFE5C158);
-  static const Color deepGold = Color(0xFFB58E26);
-  static const Color softChampagne = Color(0xFFFBF4E2);
-  static const Color goldBorder = Color(0xFFE2C97E);
+  static const Color royalGold = Color(0xFF7C3AED);
+  static const Color brightGold = Color(0xFF9B6BFA);
+  static const Color deepGold = Color(0xFF5B21B6);
+  static const Color secondaryPurple = royalGold;
+  static const Color softChampagne = Color(0xFFF5F1FC);
+  static const Color goldBorder = Color(0xFFD9CBEF);
 
   // Ivory & Cream Backgrounds
-  static const Color ivoryBackground = Color(0xFFFCFBF7);
-  static const Color warmCream = Color(0xFFF7F2E8);
+  static const Color ivoryBackground = Color(0xFFFAF9FD);
+  static const Color warmCream = Color(0xFFF5F2FA);
   static const Color cardSurface = Color(0xFFFFFFFF);
   static const Color cardSurfaceTint = Color(0xFFFAF7F0);
-  static const Color borderLight = Color(0xFFEBE5D8);
+  static const Color borderLight = Color(0xFFEAE5F2);
 
   // Text & Typography
-  static const Color textPrimary = Color(0xFF221124);
-  static const Color textSecondary = Color(0xFF67586A);
-  static const Color textMuted = Color(0xFF9E92A0);
+  static const Color textPrimary = Color(0xFF211B2D);
+  static const Color textSecondary = Color(0xFF665F70);
+  static const Color textMuted = Color(0xFF91899B);
   static const Color textOnDark = Color(0xFFFFFFFF);
   static const Color textOnGold = Color(0xFF2A082B);
 

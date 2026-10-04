@@ -8,7 +8,8 @@ class LocationSelectionScreen extends StatefulWidget {
   const LocationSelectionScreen({super.key});
 
   @override
-  State<LocationSelectionScreen> createState() => _LocationSelectionScreenState();
+  State<LocationSelectionScreen> createState() =>
+      _LocationSelectionScreenState();
 }
 
 class _LocationSelectionScreenState extends State<LocationSelectionScreen> {
@@ -53,13 +54,13 @@ class _LocationSelectionScreenState extends State<LocationSelectionScreen> {
         final filteredLocations = allLocations.where((loc) {
           return loc.name.toLowerCase().contains(_searchQuery.toLowerCase()) ||
               loc.district.toLowerCase().contains(_searchQuery.toLowerCase()) ||
-              loc.description.toLowerCase().contains(_searchQuery.toLowerCase());
+              loc.description.toLowerCase().contains(
+                _searchQuery.toLowerCase(),
+              );
         }).toList();
 
         return Scaffold(
-          appBar: AppBar(
-            title: const Text('Select Service Location'),
-          ),
+          appBar: AppBar(title: const Text('Select Service Location')),
           body: Column(
             children: [
               // Search & Current Location Banner
@@ -94,11 +95,18 @@ class _LocationSelectionScreenState extends State<LocationSelectionScreen> {
                       onTap: _isDetecting ? null : _detectLocation,
                       borderRadius: BorderRadius.circular(12),
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 12,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.plumTint,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: AppColors.primaryPlum.withValues(alpha: 0.15)),
+                          border: Border.all(
+                            color: AppColors.primaryPlum.withValues(
+                              alpha: 0.15,
+                            ),
+                          ),
                         ),
                         child: Row(
                           children: [
@@ -131,7 +139,9 @@ class _LocationSelectionScreenState extends State<LocationSelectionScreen> {
                                     ),
                                   ),
                                   Text(
-                                    _isDetecting ? 'Detecting nearest Cauvery Delta hub...' : 'Auto-detect nearest wedding zone',
+                                    _isDetecting
+                                        ? 'Detecting nearest Cauvery Delta hub...'
+                                        : 'Auto-detect nearest wedding zone',
                                     style: const TextStyle(
                                       fontSize: 11,
                                       color: AppColors.textSecondary,
@@ -159,22 +169,30 @@ class _LocationSelectionScreenState extends State<LocationSelectionScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Initial Regional Launch Hubs',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.primaryPlum,
+                    const Expanded(
+                      child: Text(
+                        'Tamil Nadu locations',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.primaryPlum,
+                        ),
                       ),
                     ),
+                    const SizedBox(width: 8),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
                       decoration: BoxDecoration(
                         color: AppColors.softChampagne,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        '${filteredLocations.length} Available',
+                        '${filteredLocations.length} towns',
                         style: const TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w700,
@@ -193,7 +211,9 @@ class _LocationSelectionScreenState extends State<LocationSelectionScreen> {
                   itemCount: filteredLocations.length,
                   itemBuilder: (context, index) {
                     final loc = filteredLocations[index];
-                    final isSelected = loc.name.toLowerCase() == _repository.selectedLocation.toLowerCase();
+                    final isSelected =
+                        loc.name.toLowerCase() ==
+                        _repository.selectedLocation.toLowerCase();
 
                     return _locationCard(loc, isSelected);
                   },
@@ -265,7 +285,10 @@ class _LocationSelectionScreenState extends State<LocationSelectionScreen> {
                           ),
                           if (isSelected)
                             Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 3,
+                              ),
                               decoration: BoxDecoration(
                                 color: AppColors.primaryPlum,
                                 borderRadius: BorderRadius.circular(12),
@@ -273,7 +296,11 @@ class _LocationSelectionScreenState extends State<LocationSelectionScreen> {
                               child: const Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Icon(Icons.check_circle_rounded, size: 12, color: AppColors.royalGold),
+                                  Icon(
+                                    Icons.check_circle_rounded,
+                                    size: 12,
+                                    color: AppColors.royalGold,
+                                  ),
                                   SizedBox(width: 4),
                                   Text(
                                     'SELECTED',
@@ -290,6 +317,16 @@ class _LocationSelectionScreenState extends State<LocationSelectionScreen> {
                       ),
                       const SizedBox(height: 3),
                       Text(
+                        loc.district,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 10,
+                          color: AppColors.primaryPlum,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Text(
                         loc.tagline,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -300,13 +337,29 @@ class _LocationSelectionScreenState extends State<LocationSelectionScreen> {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          _statBadge('${loc.weddingHallsCount} Halls', Icons.castle_rounded),
-                          const SizedBox(width: 8),
-                          _statBadge('${loc.totalVendors} Total Services', Icons.storefront_rounded),
-                        ],
-                      ),
+                      if (loc.totalVendors > 0)
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 6,
+                          children: [
+                            _statBadge(
+                              '${loc.weddingHallsCount} Halls',
+                              Icons.castle_rounded,
+                            ),
+                            _statBadge(
+                              '${loc.totalVendors} Services',
+                              Icons.storefront_rounded,
+                            ),
+                          ],
+                        )
+                      else
+                        const Text(
+                          'Explore services in this area',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
                     ],
                   ),
                 ),

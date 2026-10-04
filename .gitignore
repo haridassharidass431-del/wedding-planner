@@ -33,6 +33,7 @@ migrate_working_dir/
 /build/
 /coverage/
 **/build/
+/dist/
 
 # Node / npm related
 node_modules/

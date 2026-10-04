@@ -23,7 +23,11 @@ class VendorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currencyFormatter = NumberFormat.currency(locale: 'en_IN', symbol: '₹', decimalDigits: 0);
+    final currencyFormatter = NumberFormat.currency(
+      locale: 'en_IN',
+      symbol: '₹',
+      decimalDigits: 0,
+    );
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
@@ -31,7 +35,9 @@ class VendorCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: vendor.isFeatured ? AppColors.goldBorder : AppColors.borderLight,
+          color: vendor.isFeatured
+              ? AppColors.goldBorder
+              : AppColors.borderLight,
           width: vendor.isFeatured ? 1.2 : 1,
         ),
         boxShadow: [
@@ -58,14 +64,18 @@ class VendorCard extends StatelessWidget {
                     width: double.infinity,
                     child: SafeNetworkImage(
                       imageUrl: vendor.heroImage,
-                      borderRadius: const BorderRadius.vertical(top: Radius.circular(19)),
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(19),
+                      ),
                     ),
                   ),
                   // Gradient overlay
                   Positioned.fill(
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.vertical(top: Radius.circular(19)),
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(19),
+                        ),
                         gradient: LinearGradient(
                           colors: [
                             Colors.black.withValues(alpha: 0.35),
@@ -86,7 +96,10 @@ class VendorCard extends StatelessWidget {
                       children: [
                         if (vendor.isFeatured)
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 9,
+                              vertical: 4,
+                            ),
                             margin: const EdgeInsets.only(right: 6),
                             decoration: BoxDecoration(
                               gradient: AppColors.goldGradient,
@@ -94,7 +107,11 @@ class VendorCard extends StatelessWidget {
                             ),
                             child: const Row(
                               children: [
-                                Icon(Icons.star_rounded, size: 12, color: AppColors.textOnGold),
+                                Icon(
+                                  Icons.star_rounded,
+                                  size: 12,
+                                  color: AppColors.textOnGold,
+                                ),
                                 SizedBox(width: 3),
                                 Text(
                                   'FEATURED',
@@ -108,9 +125,14 @@ class VendorCard extends StatelessWidget {
                             ),
                           ),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 4,
+                          ),
                           decoration: BoxDecoration(
-                            color: AppColors.primaryPlum.withValues(alpha: 0.85),
+                            color: AppColors.primaryPlum.withValues(
+                              alpha: 0.85,
+                            ),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(
@@ -138,8 +160,12 @@ class VendorCard extends StatelessWidget {
                           shape: BoxShape.circle,
                         ),
                         child: Icon(
-                          isWishlisted ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-                          color: isWishlisted ? Colors.red : AppColors.primaryPlum,
+                          isWishlisted
+                              ? Icons.favorite_rounded
+                              : Icons.favorite_border_rounded,
+                          color: isWishlisted
+                              ? Colors.red
+                              : AppColors.primaryPlum,
                           size: 18,
                         ),
                       ),
@@ -156,7 +182,11 @@ class VendorCard extends StatelessWidget {
                         RatingBadge(rating: vendor.rating, isCompact: true),
                         Row(
                           children: [
-                            const Icon(Icons.location_on_rounded, size: 14, color: AppColors.brightGold),
+                            const Icon(
+                              Icons.location_on_rounded,
+                              size: 14,
+                              color: AppColors.brightGold,
+                            ),
                             const SizedBox(width: 3),
                             Text(
                               vendor.location,
@@ -164,7 +194,9 @@ class VendorCard extends StatelessWidget {
                                 color: Colors.white,
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,
-                                shadows: [Shadow(color: Colors.black, blurRadius: 4)],
+                                shadows: [
+                                  Shadow(color: Colors.black, blurRadius: 4),
+                                ],
                               ),
                             ),
                           ],
@@ -221,32 +253,39 @@ class VendorCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Starting from',
-                              style: TextStyle(
-                                fontSize: 11,
-                                color: AppColors.textMuted,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Starting from',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  color: AppColors.textMuted,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '${currencyFormatter.format(vendor.startingPrice)} ${vendor.priceUnit}',
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w800,
-                                color: AppColors.primaryPlum,
+                              Text(
+                                '${currencyFormatter.format(vendor.startingPrice)} ${vendor.priceUnit}',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w800,
+                                  color: AppColors.primaryPlum,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         ElevatedButton(
                           onPressed: onBookTap ?? onTap,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.primaryPlum,
                             foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 9,
+                            ),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -256,7 +295,10 @@ class VendorCard extends StatelessWidget {
                             children: [
                               Text(
                                 'View Details',
-                                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                               SizedBox(width: 4),
                               Icon(Icons.arrow_forward_rounded, size: 14),
@@ -292,7 +334,11 @@ class VendorCompactCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currencyFormatter = NumberFormat.currency(locale: 'en_IN', symbol: '₹', decimalDigits: 0);
+    final currencyFormatter = NumberFormat.currency(
+      locale: 'en_IN',
+      symbol: '₹',
+      decimalDigits: 0,
+    );
 
     return Container(
       width: 260,
@@ -324,14 +370,19 @@ class VendorCompactCard extends StatelessWidget {
                     width: double.infinity,
                     child: SafeNetworkImage(
                       imageUrl: vendor.heroImage,
-                      borderRadius: const BorderRadius.vertical(top: Radius.circular(17)),
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(17),
+                      ),
                     ),
                   ),
                   Positioned(
                     top: 8,
                     left: 8,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
                       decoration: BoxDecoration(
                         color: AppColors.primaryPlum.withValues(alpha: 0.85),
                         borderRadius: BorderRadius.circular(6),
@@ -358,8 +409,12 @@ class VendorCompactCard extends StatelessWidget {
                           shape: BoxShape.circle,
                         ),
                         child: Icon(
-                          isWishlisted ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-                          color: isWishlisted ? Colors.red : AppColors.primaryPlum,
+                          isWishlisted
+                              ? Icons.favorite_rounded
+                              : Icons.favorite_border_rounded,
+                          color: isWishlisted
+                              ? Colors.red
+                              : AppColors.primaryPlum,
                           size: 16,
                         ),
                       ),
@@ -390,7 +445,11 @@ class VendorCompactCard extends StatelessWidget {
                     const SizedBox(height: 3),
                     Row(
                       children: [
-                        const Icon(Icons.location_on_rounded, size: 12, color: AppColors.royalGold),
+                        const Icon(
+                          Icons.location_on_rounded,
+                          size: 12,
+                          color: AppColors.royalGold,
+                        ),
                         const SizedBox(width: 3),
                         Text(
                           vendor.location,
