@@ -410,7 +410,8 @@ class MockWeddingRepository extends ChangeNotifier {
         booking.eventDate.day,
       );
 
-      return bookingDay == normalized && blockedStatuses.contains(booking.status);
+      return bookingDay == normalized &&
+          blockedStatuses.contains(booking.status);
     });
   }
 

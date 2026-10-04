@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "installCommand": "chmod +x ./scripts/install-flutter.sh && ./scripts/install-flutter.sh",
+  "buildCommand": "chmod +x ./scripts/vercel-build.sh && ./scripts/vercel-build.sh",
+  "outputDirectory": "build/web",
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}

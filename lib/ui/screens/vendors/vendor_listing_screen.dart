@@ -547,8 +547,12 @@ class _VendorListingScreenState extends State<VendorListingScreen> {
                                               width: 58,
                                               height: 58,
                                               fit: BoxFit.cover,
-                                              errorBuilder: (context, error, stackTrace) =>
-                                                  const Icon(
+                                              errorBuilder:
+                                                  (
+                                                    context,
+                                                    error,
+                                                    stackTrace,
+                                                  ) => const Icon(
                                                     Icons.storefront_rounded,
                                                     color:
                                                         AppColors.primaryPlum,

@@ -57,7 +57,8 @@ class _BookingScreenState extends State<BookingScreen> {
                 features: ['Full access', 'Event coordinator'],
               ));
 
-    final initialDate = _firstAvailableDate() ?? DateTime.now().add(const Duration(days: 1));
+    final initialDate =
+        _firstAvailableDate() ?? DateTime.now().add(const Duration(days: 1));
     _selectedDate = initialDate;
     _focusedMonth = DateTime(initialDate.year, initialDate.month, 1);
   }
@@ -88,7 +89,8 @@ class _BookingScreenState extends State<BookingScreen> {
   }
 
   bool _isAvailableDate(DateTime date) {
-    return !_isPastDate(date) && _repository.isDateAvailable(widget.vendor.id, date);
+    return !_isPastDate(date) &&
+        _repository.isDateAvailable(widget.vendor.id, date);
   }
 
   bool _isValidBookingDate() {
@@ -97,7 +99,11 @@ class _BookingScreenState extends State<BookingScreen> {
   }
 
   List<DateTime?> _buildCalendarDays() {
-    final firstDayOfMonth = DateTime(_focusedMonth.year, _focusedMonth.month, 1);
+    final firstDayOfMonth = DateTime(
+      _focusedMonth.year,
+      _focusedMonth.month,
+      1,
+    );
     final daysInMonth = DateTime(
       _focusedMonth.year,
       _focusedMonth.month + 1,
@@ -124,7 +130,9 @@ class _BookingScreenState extends State<BookingScreen> {
     if (_selectedDate.isBefore(DateTime.now())) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('This date is not available. Please choose another date.'),
+          content: Text(
+            'This date is not available. Please choose another date.',
+          ),
         ),
       );
       return;
@@ -133,7 +141,9 @@ class _BookingScreenState extends State<BookingScreen> {
     if (!_repository.isDateAvailable(widget.vendor.id, _selectedDate)) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('This date is not available. Please choose another date.'),
+          content: Text(
+            'This date is not available. Please choose another date.',
+          ),
         ),
       );
       return;
@@ -343,12 +353,13 @@ class _BookingScreenState extends State<BookingScreen> {
                       itemCount: calendarDays.length,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 7,
-                        crossAxisSpacing: 6,
-                        mainAxisSpacing: 6,
-                        childAspectRatio: 0.9,
-                      ),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 7,
+                            crossAxisSpacing: 6,
+                            mainAxisSpacing: 6,
+                            childAspectRatio: 0.9,
+                          ),
                       itemBuilder: (context, index) {
                         final date = calendarDays[index];
                         if (date == null) {
@@ -441,9 +452,18 @@ class _BookingScreenState extends State<BookingScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: const [
-                        _LegendChip(color: AppColors.success, label: 'Available'),
-                        _LegendChip(color: AppColors.primaryPlum, label: 'Selected'),
-                        _LegendChip(color: AppColors.error, label: 'Unavailable'),
+                        _LegendChip(
+                          color: AppColors.success,
+                          label: 'Available',
+                        ),
+                        _LegendChip(
+                          color: AppColors.primaryPlum,
+                          label: 'Selected',
+                        ),
+                        _LegendChip(
+                          color: AppColors.error,
+                          label: 'Unavailable',
+                        ),
                       ],
                     ),
                   ],
@@ -477,10 +497,15 @@ class _BookingScreenState extends State<BookingScreen> {
                       value: DateFormat('dd MMMM yyyy').format(_selectedDate),
                     ),
                     _SummaryRow(label: 'Time', value: _selectedSlot),
-                    _SummaryRow(label: 'Location', value: widget.vendor.location),
+                    _SummaryRow(
+                      label: 'Location',
+                      value: widget.vendor.location,
+                    ),
                     _SummaryRow(
                       label: 'Status',
-                      value: _isValidBookingDate() ? 'Available' : 'Unavailable',
+                      value: _isValidBookingDate()
+                          ? 'Available'
+                          : 'Unavailable',
                     ),
                   ],
                 ),
@@ -518,7 +543,8 @@ class _BookingScreenState extends State<BookingScreen> {
                 initialValue: _selectedSlot,
                 items: _timeSlots
                     .map(
-                      (slot) => DropdownMenuItem(value: slot, child: Text(slot)),
+                      (slot) =>
+                          DropdownMenuItem(value: slot, child: Text(slot)),
                     )
                     .toList(),
                 onChanged: (value) {
@@ -530,7 +556,9 @@ class _BookingScreenState extends State<BookingScreen> {
               TextField(
                 controller: _notesController,
                 maxLines: 3,
-                decoration: const InputDecoration(labelText: 'Notes (optional)'),
+                decoration: const InputDecoration(
+                  labelText: 'Notes (optional)',
+                ),
               ),
               if (!_isValidBookingDate())
                 const Padding(

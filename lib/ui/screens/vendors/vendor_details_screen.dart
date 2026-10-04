@@ -39,7 +39,11 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final currencyFormatter = NumberFormat.currency(locale: 'en_IN', symbol: '₹', decimalDigits: 0);
+    final currencyFormatter = NumberFormat.currency(
+      locale: 'en_IN',
+      symbol: '₹',
+      decimalDigits: 0,
+    );
     final vendor = widget.vendor;
 
     return ListenableBuilder(
@@ -65,7 +69,10 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                         shape: BoxShape.circle,
                       ),
                       child: IconButton(
-                        icon: const Icon(Icons.arrow_back_rounded, color: AppColors.primaryPlum),
+                        icon: const Icon(
+                          Icons.arrow_back_rounded,
+                          color: AppColors.primaryPlum,
+                        ),
                         onPressed: () => Navigator.of(context).pop(),
                       ),
                     ),
@@ -78,24 +85,38 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                         ),
                         child: IconButton(
                           icon: Icon(
-                            isWishlisted ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-                            color: isWishlisted ? Colors.red : AppColors.primaryPlum,
+                            isWishlisted
+                                ? Icons.favorite_rounded
+                                : Icons.favorite_border_rounded,
+                            color: isWishlisted
+                                ? Colors.red
+                                : AppColors.primaryPlum,
                           ),
-                          onPressed: () => _repository.toggleWishlist(vendor.id),
+                          onPressed: () =>
+                              _repository.toggleWishlist(vendor.id),
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(top: 8, bottom: 8, right: 12),
+                        margin: const EdgeInsets.only(
+                          top: 8,
+                          bottom: 8,
+                          right: 12,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.white.withValues(alpha: 0.85),
                           shape: BoxShape.circle,
                         ),
                         child: IconButton(
-                          icon: const Icon(Icons.share_outlined, color: AppColors.primaryPlum),
+                          icon: const Icon(
+                            Icons.share_outlined,
+                            color: AppColors.primaryPlum,
+                          ),
                           onPressed: () {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Text('Link copied to clipboard for sharing!'),
+                                content: Text(
+                                  'Link copied to clipboard for sharing!',
+                                ),
                                 behavior: SnackBarBehavior.floating,
                               ),
                             );
@@ -138,7 +159,10 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                             bottom: 16,
                             right: 16,
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 4,
+                              ),
                               decoration: BoxDecoration(
                                 color: Colors.black.withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
@@ -169,11 +193,18 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                           Row(
                             children: [
                               Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: 4,
+                                ),
                                 decoration: BoxDecoration(
                                   color: AppColors.plumTint,
                                   borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: AppColors.primaryPlum.withValues(alpha: 0.2)),
+                                  border: Border.all(
+                                    color: AppColors.primaryPlum.withValues(
+                                      alpha: 0.2,
+                                    ),
+                                  ),
                                 ),
                                 child: Text(
                                   vendor.category.toUpperCase(),
@@ -188,7 +219,10 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                               const SizedBox(width: 8),
                               if (vendor.isFeatured)
                                 Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 4,
+                                  ),
                                   decoration: BoxDecoration(
                                     gradient: AppColors.goldGradient,
                                     borderRadius: BorderRadius.circular(8),
@@ -234,7 +268,11 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
 
                           Row(
                             children: [
-                              const Icon(Icons.location_on_rounded, size: 16, color: AppColors.royalGold),
+                              const Icon(
+                                Icons.location_on_rounded,
+                                size: 16,
+                                color: AppColors.royalGold,
+                              ),
                               const SizedBox(width: 4),
                               Text(
                                 '${vendor.location} • ${vendor.experienceYears} Years in Service',
@@ -258,16 +296,27 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                               );
                             },
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 14,
+                                vertical: 10,
+                              ),
                               decoration: BoxDecoration(
                                 color: AppColors.softChampagne,
                                 borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: AppColors.goldBorder.withValues(alpha: 0.5)),
+                                border: Border.all(
+                                  color: AppColors.goldBorder.withValues(
+                                    alpha: 0.5,
+                                  ),
+                                ),
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  RatingBadge(rating: vendor.rating, reviewCount: vendor.reviewCount),
+                                  RatingBadge(
+                                    rating: vendor.rating,
+                                    reviewCount: vendor.reviewCount,
+                                  ),
                                   const Row(
                                     children: [
                                       Text(
@@ -278,7 +327,11 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                                           color: AppColors.primaryPlum,
                                         ),
                                       ),
-                                      Icon(Icons.chevron_right_rounded, size: 16, color: AppColors.primaryPlum),
+                                      Icon(
+                                        Icons.chevron_right_rounded,
+                                        size: 16,
+                                        color: AppColors.primaryPlum,
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -296,7 +349,11 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                                 color: AppColors.primaryPlum,
                                 onTap: () {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('Calling ${vendor.phone}...')),
+                                    SnackBar(
+                                      content: Text(
+                                        'Calling ${vendor.phone}...',
+                                      ),
+                                    ),
                                   );
                                 },
                               ),
@@ -307,7 +364,11 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                                 color: const Color(0xFF25D366),
                                 onTap: () {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text('Opening WhatsApp chat with vendor...')),
+                                    const SnackBar(
+                                      content: Text(
+                                        'Opening WhatsApp chat with vendor...',
+                                      ),
+                                    ),
                                   );
                                 },
                               ),
@@ -318,7 +379,11 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                                 color: AppColors.royalGold,
                                 onTap: () {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('Address: ${vendor.address}')),
+                                    SnackBar(
+                                      content: Text(
+                                        'Address: ${vendor.address}',
+                                      ),
+                                    ),
                                   );
                                 },
                               ),
@@ -370,16 +435,25 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                             runSpacing: 8,
                             children: vendor.amenities.map((amenity) {
                               return Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 7,
+                                ),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(color: AppColors.borderLight),
+                                  border: Border.all(
+                                    color: AppColors.borderLight,
+                                  ),
                                 ),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    const Icon(Icons.check_circle_rounded, size: 14, color: AppColors.royalGold),
+                                    const Icon(
+                                      Icons.check_circle_rounded,
+                                      size: 14,
+                                      color: AppColors.royalGold,
+                                    ),
                                     const SizedBox(width: 6),
                                     Text(
                                       amenity,
@@ -408,7 +482,10 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                           const SizedBox(height: 6),
                           const Text(
                             'Choose a package tailored for your auspicious occasion:',
-                            style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: AppColors.textSecondary,
+                            ),
                           ),
                           const SizedBox(height: 14),
 
@@ -427,13 +504,16 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(16),
                                     border: Border.all(
-                                      color: isSelected ? AppColors.royalGold : AppColors.borderLight,
+                                      color: isSelected
+                                          ? AppColors.royalGold
+                                          : AppColors.borderLight,
                                       width: isSelected ? 2 : 1,
                                     ),
                                     boxShadow: isSelected
                                         ? [
                                             BoxShadow(
-                                              color: AppColors.royalGold.withValues(alpha: 0.15),
+                                              color: AppColors.royalGold
+                                                  .withValues(alpha: 0.15),
                                               blurRadius: 12,
                                               offset: const Offset(0, 4),
                                             ),
@@ -441,19 +521,25 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                                         : null,
                                   ),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Expanded(
                                             child: Row(
                                               children: [
                                                 Icon(
                                                   isSelected
-                                                      ? Icons.radio_button_checked_rounded
-                                                      : Icons.radio_button_off_rounded,
-                                                  color: isSelected ? AppColors.royalGold : AppColors.textMuted,
+                                                      ? Icons
+                                                            .radio_button_checked_rounded
+                                                      : Icons
+                                                            .radio_button_off_rounded,
+                                                  color: isSelected
+                                                      ? AppColors.royalGold
+                                                      : AppColors.textMuted,
                                                   size: 20,
                                                 ),
                                                 const SizedBox(width: 8),
@@ -462,8 +548,10 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                                                     pkg.name,
                                                     style: const TextStyle(
                                                       fontSize: 15,
-                                                      fontWeight: FontWeight.w700,
-                                                      color: AppColors.textPrimary,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color:
+                                                          AppColors.textPrimary,
                                                     ),
                                                   ),
                                                 ),
@@ -496,7 +584,11 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                                           return Row(
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
-                                              const Icon(Icons.diamond_outlined, size: 12, color: AppColors.deepGold),
+                                              const Icon(
+                                                Icons.diamond_outlined,
+                                                size: 12,
+                                                color: AppColors.deepGold,
+                                              ),
                                               const SizedBox(width: 4),
                                               Text(
                                                 feat,
@@ -534,13 +626,17 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                                 onPressed: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (_) => ReviewsScreen(vendor: vendor),
+                                      builder: (_) =>
+                                          ReviewsScreen(vendor: vendor),
                                     ),
                                   );
                                 },
                                 child: const Text(
                                   'View All',
-                                  style: TextStyle(color: AppColors.royalGold, fontWeight: FontWeight.w700),
+                                  style: TextStyle(
+                                    color: AppColors.royalGold,
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
                               ),
                             ],
@@ -551,7 +647,9 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(16),
-                                border: Border.all(color: AppColors.borderLight),
+                                border: Border.all(
+                                  color: AppColors.borderLight,
+                                ),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -560,12 +658,15 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                                     children: [
                                       CircleAvatar(
                                         radius: 18,
-                                        backgroundImage: NetworkImage(reviews.first.userAvatar),
+                                        backgroundImage: NetworkImage(
+                                          reviews.first.userAvatar,
+                                        ),
                                       ),
                                       const SizedBox(width: 10),
                                       Expanded(
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               reviews.first.userName,
@@ -584,7 +685,10 @@ class _VendorDetailsScreenState extends State<VendorDetailsScreen> {
                                           ],
                                         ),
                                       ),
-                                      RatingBadge(rating: reviews.first.rating, isCompact: true),
+                                      RatingBadge(
+                                        rating: reviews.first.rating,
+                                        isCompact: true,
+                                      ),
                                     ],
                                   ),
                                   const SizedBox(height: 10),
